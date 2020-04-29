@@ -31,6 +31,15 @@ class BinTree:
                 self.lst.pop(0)     # 弹出self.lst 第一个位置的元素
     
     # 二叉树的遍历
+    # 前序遍历递归的方法
+    def preorder_traversal(self,root):
+        # 前序遍历 根，左，右
+        if not root:
+            return
+        print(root.data)
+        self.preorder_traversal(root.left)
+        self.preorder_traversal(root.right)
+
     #中序遍历递归的方法
     def inorder_traversal(self,root):
         # 中序遍历，左，根，右
@@ -39,6 +48,15 @@ class BinTree:
         self.inorder_traversal(root.left)
         print(root.data)
         self.inorder_traversal(root.right)
+
+    # 后序遍历递归的方法
+    def postorder_traversal(self,root):
+        # 后序遍历 左，右，根
+        if not root:
+            return
+        self.preorder_traversal(root.left)
+        self.preorder_traversal(root.right)
+        print(root.data)
 
     # 中序遍历的堆栈实现的代码如下
     def inorder_traversal_stack(self,root):
@@ -62,7 +80,7 @@ def main():
     tree= BinTree()
     for i in range(10):
         tree.insert(i)
-    tree.inorder_traversal_stack(tree.root)
+    tree.preorder_traversal(tree.root)
 
 if __name__ == "__main__":
     main()
