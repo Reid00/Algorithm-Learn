@@ -1,35 +1,69 @@
+"""
+树的基本操作，创建，广度优先，深度优先遍历
+"""
 
 
 class Node:
-    # 定义树的节点
-    def __init__(self,data=None,left=None,right=None):
-        # 初始化类，data 为根节点，left 为做子树，right 为右子树
-        self.data = data
+    """
+    树的基本节点类
+    """
+    def __init__(self,elem,left=None,right = None):
+        """节点的初始化,
+        elem 为节点的元素
+        left 为左孩子
+        right 为右孩子
+        """
+        self.elem = elem
         self.left = left
         self.right =right
 
 class BinTree:
+    """
+    二叉树的构建,用队列存储节点元素，方便后续操作
+    """
     def __init__(self):
-        #初始化类
+        """二叉树的初始化
+        """
         self.root = None         #初始化根节点为None
-        self.lst= []              #定义列表用于存储节点的地址
 
-    def insert(self,data):
-        # 定义insert 方法，向树结构中添加元素
-        node = Node(data)           # 实例化树的节点
+    def add(self,elem):
+        """为树添加元素elem
+        """
+        node = Node(elem)
+
         if self.root is None:
-            self.root=node
-            self.lst.append(self.root)
+            self.root = node
         else:
-            root_node = self.lst[0]     #将第一个元素设置为根节点
-            if root_node.left is None:
-                root_node.left = node
-                self.lst.append(root_node.left)
-            elif root_node.right is None:
-                root_node.right = node
-                self.lst.append(root_node.right)
-                self.lst.pop(0)     # 弹出self.lst 第一个位置的元素
-    
+            queue = []
+            queue.append(self.root)
+            while queue: #对已有的节点进行层次遍历
+                cur_node = queue.pop(0)
+                if cur_node.left is None:
+                    cur_node.left = node
+                    return
+                else:  # 如果左子树都不为空，加入队列继续判断
+                    queue.append(cur_node.left)
+                if cur_node.right is None:
+                    cur_node.right = node
+                    return
+                else:
+                    # 如果右子树都不为空，加入队列继续判断
+                    queue.append(cur_node.right)
+
+
+    def breadth_travel(self):
+        """
+        二叉树的广度优先遍历
+        """
+        queue = [self.root]
+        while queue:
+            cur_node = queue.pop(0)
+            print(cur_node.elem,end= ' ')
+            if cur_node.left is not None:
+                queue.append(cur_node.left)
+            if cur_node.right is not None:
+                queue.append(cur_node.right)
+            
     # 二叉树的遍历
     # 前序遍历递归的方法
     def preorder_traversal(self,root):
@@ -75,12 +109,14 @@ class BinTree:
             node = node.right           # 寻找当前节点的右子节点
         print(res)
             
-
-def main():
-    tree= BinTree()
-    for i in range(10):
-        tree.insert(i)
-    tree.preorder_traversal(tree.root)
-
 if __name__ == "__main__":
-    main()
+    tree = BinTree()
+    tree.add(0)
+    tree.add(1)
+    tree.add(2)
+    tree.add(3)
+    tree.add(4)
+    tree.add(5)
+    tree.add(6)
+    tree.add(7)
+    tree.breadth_travel()
