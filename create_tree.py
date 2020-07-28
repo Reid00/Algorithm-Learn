@@ -94,23 +94,6 @@ class BinTree:
         self.preorder_traversal(root.right)
         print(root.elem)
 
-    # 中序遍历的堆栈实现的代码如下
-    def inorder_traversal_stack(self):
-        # 中序遍历，左，根，右
-        if not self.root:
-            return
-        stack = []  # 获取当前节点
-        res = []    # 存储遍历出来的节点元素值
-        cur_node = self.root
-        while cur_node or stack:
-            while cur_node:  # 当前节点不为None，将其添加到stack 中
-                stack.append(cur_node)
-                cur_node = cur_node.left  # 寻找当前节点的左子节点，直到当前节点无左子节点跳出内循环
-            cur_node = stack.pop()  # 当前节点pop 出stack获取当前节点的地址值
-            res.append(cur_node.elem)  # 将当前节点的数据添加到result 中
-            cur_node = cur_node.right  # 寻找当前节点的右子节点
-        print(res)
-
     def preorder_traversal_stack(self):
         """
         深度优先遍历之前序遍历用非递归的方式实现 -- 栈
@@ -129,6 +112,24 @@ class BinTree:
             cur_node = stack.pop()
             cur_node = cur_node.right
         print(res)
+
+    # 中序遍历的堆栈实现的代码如下
+    def inorder_traversal_stack(self):
+        # 中序遍历，左，根，右
+        if not self.root:
+            return
+        stack = []  # 获取当前节点
+        res = []    # 存储遍历出来的节点元素值
+        cur_node = self.root
+        while cur_node or stack:
+            while cur_node:  # 当前节点不为None，将其添加到stack 中
+                stack.append(cur_node)
+                cur_node = cur_node.left  # 寻找当前节点的左子节点，直到当前节点无左子节点跳出内循环
+            cur_node = stack.pop()  # 当前节点pop 出stack获取当前节点的地址值
+            res.append(cur_node.elem)  # 将当前节点的数据添加到result 中
+            cur_node = cur_node.right  # 寻找当前节点的右子节点
+        print(res)
+
 
     def postorder_traversal_stack(self):
         """
