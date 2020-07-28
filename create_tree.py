@@ -68,7 +68,7 @@ class BinTree:
 
     # 二叉树的遍历
     # 前序遍历递归的方法
-    def preorder_traversal(self,node):
+    def preorder_traversal(self, node):
         # 前序遍历 根，左，右
         if not node:
             return
@@ -77,7 +77,7 @@ class BinTree:
         self.preorder_traversal(node.right)
 
     #中序遍历递归的方法
-    def inorder_traversal(self,node):
+    def inorder_traversal(self, node):
         # 中序遍历，左，根，右
         if node is None:
             return 'this is empty'
@@ -86,7 +86,7 @@ class BinTree:
         self.inorder_traversal(node.right)
 
     # 后序遍历递归的方法
-    def postorder_traversal(self,root):
+    def postorder_traversal(self, root):
         # 后序遍历 左，右，根
         if not root:
             return
@@ -111,6 +111,48 @@ class BinTree:
             cur_node = cur_node.right  # 寻找当前节点的右子节点
         print(res)
 
+    def preorder_traversal_stack(self):
+        """
+        深度优先遍历之前序遍历用非递归的方式实现 -- 栈
+        前序遍历: 根，左，右
+        """
+        if self.root is None:
+            return 'this is empty'
+        stack = []  # 获取节点
+        res = []  # 最终遍历的结果
+        cur_node = self.root
+        while stack or cur_node:
+            while cur_node:
+                res.append(cur_node.elem)
+                stack.append(cur_node)
+                cur_node = cur_node.left
+            cur_node = stack.pop()
+            cur_node = cur_node.right
+        print(res)
+
+    def postorder_traversal_stack(self):
+        """
+        深度优先遍历之后序, 非递归的方式实现 -- 栈
+        后序遍历: 左，右，根
+        """
+        if self.root is None:
+            print('this is empty')
+        stack1 = []
+        stack2 = []
+        res = []
+        cur_node = self.root
+        stack1.append(cur_node)
+        while stack1:    # 找出后序遍历的逆序，存放在 stack2中
+            cur_node = stack1.pop()
+            if cur_node.left:
+                stack1.append(cur_node.left)
+            if cur_node.right:
+                stack1.append(cur_node.right)
+            stack2.append(cur_node)
+        while stack2:   # 将 stack2中的元素出栈，即是后序遍历序列
+            print(stack2.pop().elem)
+        
+
 
 if __name__ == "__main__":
     tree = BinTree()
@@ -124,3 +166,6 @@ if __name__ == "__main__":
     tree.add(7)
     tree.breadth_traversal()
     tree.inorder_traversal_stack()
+    tree.postorder_traversal(tree.root)
+    print('====')
+    tree.postorder_traversal_stack()
