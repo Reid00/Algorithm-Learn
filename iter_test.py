@@ -10,6 +10,8 @@
 
 import asyncio
 import socket
+from collections import Counter
+
 
 async def main():
     print('hello')
@@ -24,13 +26,34 @@ def gen():
     print('y is:', y)
 
 
+def single_number(nums: list):
+    """找出只出现一次的数字
+    """
+    res = 0
+    for i in nums:
+        res ^= i
+    return res
+
+
+def reverse_string(s, left, right):
+    """
+    判断是否为回文s[left: right+1]
+    """
+    print(s[left: right+1])
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+
+    return True
+
 
 if __name__ == "__main__":
-    # asyncio.run(main())
-    g = gen()
-    # res = g.send(None)
-    res = next(g)
-    print('第一次yield 的返回值:', res)
-    res = g.send('测试')
-    print('第二次yield 的返回值:', res)
-    g.send('y is replaced')
+    a = 'abcdaa'
+    b = 'bcaada'
+    cnt_a, cnt_b = Counter(a), Counter(b)
+    print(single_number([4,1,2,1,2]))
+    print(8&(8-1))
+
+    print(reverse_string('easgsaeddhh', 0, 6))
