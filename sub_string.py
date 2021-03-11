@@ -8,6 +8,10 @@
 '''
 
 import collections
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+
 
 class Solution:
     def right(self, s):
@@ -34,9 +38,21 @@ class Solution:
                     return False
         return not stack
 
+
+def data_visualization():
+    """
+    数据可视化
+    """
+    print('data visualization...')
+    df = pd.DataFrame(np.abs(np.random.randn(5, 3)), 
+                index=['Mon', 'Tue', 'Wen', 'Thir', 'Fri'], 
+                columns=['A', 'B', 'C'])
+    df.plot()
+    plt.show()
+
 if __name__ == "__main__":
     so = Solution()
     s = "[]())"
     # t = "ABC"
     print(so.right(s))
-    
+    data_visualization()

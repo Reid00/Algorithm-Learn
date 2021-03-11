@@ -10,11 +10,8 @@
 
 import asyncio
 import socket
-<<<<<<< HEAD
 from collections import Counter
 
-=======
->>>>>>> 5870fa77866bd6dd90e2402f6f1952fb99820cc6
 
 async def main():
     print('hello')
@@ -29,7 +26,6 @@ def gen():
     print('y is:', y)
 
 
-<<<<<<< HEAD
 def single_number(nums: list):
     """找出只出现一次的数字
     """
@@ -61,15 +57,3 @@ if __name__ == "__main__":
     print(8&(8-1))
 
     print(reverse_string('easgsaeddhh', 0, 6))
-=======
-
-if __name__ == "__main__":
-    # asyncio.run(main())
-    g = gen()
-    # res = g.send(None)
-    res = next(g)
-    print('第一次yield 的返回值:', res)
-    res = g.send('测试')
-    print('第二次yield 的返回值:', res)
-    g.send('y is replaced')
->>>>>>> 5870fa77866bd6dd90e2402f6f1952fb99820cc6
