@@ -49,11 +49,40 @@ def reverse_string(s, left, right):
     return True
 
 
-if __name__ == "__main__":
-    a = 'abcdaa'
-    b = 'bcaada'
-    cnt_a, cnt_b = Counter(a), Counter(b)
-    print(single_number([4,1,2,1,2]))
-    print(8&(8-1))
+def quick_sort(lst: list, start, end):
+    """快速排序
 
-    print(reverse_string('easgsaeddhh', 0, 6))
+    Args:
+        lst (List): [description]
+    """
+    if start >= end:
+        return
+    pivot = lst[start]
+    low, high = start, end
+
+    while low < high:
+        while low < high and lst[high] >= pivot :
+            high -= 1
+        lst[low] = lst[high]
+
+        while low < high and lst[low] < pivot:
+            low += 1
+        lst[high] = lst[low]
+
+    lst[low] = pivot
+    quick_sort(lst, start, low -1 )
+    quick_sort(lst, low + 1, end)
+
+
+
+if __name__ == "__main__":
+    # a = 'abcdaa'
+    # b = 'bcaada'
+    # cnt_a, cnt_b = Counter(a), Counter(b)
+    # print(single_number([4,1,2,1,2]))
+    # print(8&(8-1))
+
+    # print(reverse_string('easgsaeddhh', 0, 6))
+    lst = [10,8,11,55,22,3]
+    quick_sort(lst, 0, 5)
+    print(lst)
