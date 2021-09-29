@@ -77,3 +77,26 @@ func TestIntSliceEqual(t *testing.T) {
 		t.Errorf("Actual: %v, expected: %v\n", actual, expected)
 	}
 }
+
+func TestMergeSort(t *testing.T) {
+	actual := mergeSort([]int{9, 2, 5, 7, 6, 3})
+
+	expected := []int{2, 3, 5, 6, 7, 9}
+	if intSliceEqual(actual, expected) {
+		t.Log("the result is the same")
+	} else {
+		t.Errorf("actual is %v, expeced is %v\n", actual, expected)
+	}
+}
+
+func TestPartition(t *testing.T) {
+	a := []int{9, 2, 5, 7, 6, 3}
+	actual := quickSort(a)
+	expected := []int{2, 3, 5, 6, 7, 9}
+	if intSliceEqual(actual, expected) {
+		t.Log("TestPartition result right.")
+	} else {
+		t.Errorf("TestPartition result wrong. actual: %d", actual)
+	}
+
+}
