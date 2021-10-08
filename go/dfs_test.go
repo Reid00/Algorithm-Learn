@@ -100,3 +100,15 @@ func TestPartition(t *testing.T) {
 	}
 
 }
+
+func TestOpenLock(t *testing.T) {
+	deadlock := []string{"0201", "0101", "0102", "1212", "2002"}
+	target := "0202"
+	actual := openLock(deadlock, target)
+	expected := 6
+	if actual == expected {
+		t.Log("TestOpenLock right")
+	} else {
+		t.Errorf("TestOpenLock failed, actaul %v, expect %v\n", actual, expected)
+	}
+}
