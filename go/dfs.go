@@ -36,7 +36,7 @@ func preorderTraversalNo(root *TreeNode) []int {
 	}
 
 	stack := make([]*TreeNode, 0)
-	stack = append(stack, root)
+	// stack = append(stack, root) #BUG will be if add at first
 	node := root
 	for len(stack) > 0 || node != nil {
 		for node != nil {
@@ -45,7 +45,8 @@ func preorderTraversalNo(root *TreeNode) []int {
 			node = node.Left
 		}
 
-		node = stack[len(stack)-1]
+		// node = stack[len(stack)-1] # BUG should be get the right node
+		node = stack[len(stack)-1].Right
 		stack = stack[:len(stack)-1]
 
 	}
