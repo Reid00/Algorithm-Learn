@@ -24,7 +24,7 @@ func HeapSort(a []int) []int {
 	return a
 }
 
-// 对a[i] 进行上浮堆化，保持堆结构
+// 对a[i] 进行上浮/下沉堆化，保持堆结构
 func heapify(a []int, i, length int) {
 	for {
 		// 左孩子节点的索引，从零开始
