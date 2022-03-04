@@ -12,23 +12,26 @@ func _quickSort(nums []int, start, end int) {
 	if start < end {
 		// 分治法
 		pivot := partition(nums, start, end)
-		_quickSort(nums, 0, pivot-1)
+		_quickSort(nums, start, pivot-1)
 		_quickSort(nums, pivot+1, end)
 	}
 }
 
+// 对nums[start:end+1] 进行分区，找到一个pivot 使得左边的比它小，右边的比他大
 func partition(nums []int, start, end int) int {
-	p := nums[end]
-	i := start // 记录最终基准元素的index
 
-	for j := start; j < end; j++ {
-		if nums[j] < p {
-			swap(nums, i, j)
-			i++
+	p := nums[end] // 需要比较的元素
+	s := start     // 支点的位置，s 左侧比p 小，右侧比p 大
+
+	for i := start; i < end; i++ {
+		if nums[i] < p {
+			swap(nums, s, i)
+			s++
 		}
 	}
-	swap(nums, i, end) // 循环结束后，i 是第一个比基准元素大的值，将它跟基准元素进行交换
-	return i
+	// 循环结束之后，交换p 与s 的位置
+	swap(nums, s, end)
+	return s
 }
 
 func swap(nums []int, i, j int) {
