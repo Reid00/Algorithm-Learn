@@ -4,7 +4,7 @@
 @Time        :2020/12/08 10:51:25
 @Author      :Reid
 @Version     :1.0
-@Desc        :二叉搜索树的基础操作，判断BST 的合法性，增删查.(删，查略微复杂)
+@Desc        :二叉搜索树的基础操作, 判断BST 的合法性，增删查.(删，查略微复杂)
 '''
 
 # 二叉搜索树（Binary Search Tree，简称 BST）是一种很常用的的二叉树。
@@ -30,7 +30,7 @@ def is_valid_BST(root):
     return valid_BST(root, -2**32, 2**32 - 1)
 
 
-def is_in_bst(root: Node, target: int):
+def is_in_bst(root, target: int) -> bool:
     """
     target 是否在二叉搜索树中
     """
