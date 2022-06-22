@@ -1,3 +1,3 @@
-module github.com/tree
+module github.com/Reid00/Algorithm-Learn
 
 go 1.17
