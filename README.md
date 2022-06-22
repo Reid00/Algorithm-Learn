@@ -1,7 +1,5 @@
-## 树相关的练习
+# Algorithm-Learn
 
-<!-- 选择树的原因是laluladong的介绍，可以练习框架思维 -->
+学习数据结构与算法的代码示例，主要是Go, Python。维护这个 Repository 的目的有两个：
 
-1. 二叉树
-2. 二叉搜索树(BST)
-3. other
+Leetcode 上的题目记录，主要是Hot 100 和精选Top 面试题。
