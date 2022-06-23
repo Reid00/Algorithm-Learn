@@ -62,8 +62,3 @@ func heapify(a []int, i, length int) {
 func swap(a []int, i, j int) {
 	a[i], a[j] = a[j], a[i]
 }
-
-func main() {
-	a := []int{4, 6, 8, 5, 9}
-	fmt.Println(HeapSort(a))
-}
