@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // function: heap sort
 
 // []int{4,6,8,5,9}
@@ -10,7 +8,7 @@ import "fmt"
 func HeapSort(a []int) []int {
 
 	// 将无序数组a， 构建成一个大根堆
-	for i := len(a)/2 - 1; i >= 0; i-- { // 从第一个非叶子节点开始，因为叶子节点没有子节点不需要进行堆化[没有左右孩子]
+	for i := len(a)/2 - 1; i >= 0; i-- { // 从最后一个非叶子结点开始，因为叶子节点没有子节点不需要进行堆化[没有左右孩子]
 		heapify(a, i, len(a))
 	}
 
@@ -35,7 +33,7 @@ func heapify(a []int, i, length int) {
 		// largest 保存根，左，右 三者中的较大值的索引
 		largest := i
 
-		// 存在左节点，且左节点值比较大，则去左节点
+		// 存在左节点，且左节点值比较大，则取左节点
 		if l < length && a[l] > a[largest] {
 			largest = l
 		}
