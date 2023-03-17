@@ -1,4 +1,4 @@
-package main
+package array
 
 // O(n) Hash Map
 func twoSum1(nums []int, target int) []int {

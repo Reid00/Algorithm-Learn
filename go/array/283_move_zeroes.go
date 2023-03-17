@@ -1,4 +1,4 @@
-package main
+package array
 
 func moveZeroes(nums []int) {
 	if len(nums) <= 1 {

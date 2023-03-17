@@ -1,4 +1,4 @@
-package main
+package array
 
 func removeDuplicates(nums []int) int {
 	// 双指针，快慢指针

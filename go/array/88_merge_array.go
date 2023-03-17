@@ -1,4 +1,4 @@
-package main
+package array
 
 // merge O(n) 的时间复杂度
 // O(m+n)的空间复杂度

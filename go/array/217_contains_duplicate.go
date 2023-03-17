@@ -1,4 +1,4 @@
-package main
+package array
 
 func containsDuplicate(nums []int) bool {
 	// HashMap

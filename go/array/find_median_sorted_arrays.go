@@ -1,4 +1,4 @@
-package main
+package array
 
 // 暴力遍历合并数组
 // O(m+n)
