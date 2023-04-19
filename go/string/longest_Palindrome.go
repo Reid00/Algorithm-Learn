@@ -1,4 +1,4 @@
-package main
+package string
 
 // 给你一个字符串 s，找到 s 中最长的回文子串。
 // no5, 最长回文子串
@@ -53,7 +53,7 @@ func longestPalindrome(s string) string {
 // 从每个字符吵两边扩散，记录为回文的情况
 func longestPalindrome2(s string) string {
 
-	if len(s) <2 {
+	if len(s) < 2 {
 		return s
 	}
 
@@ -63,11 +63,11 @@ func longestPalindrome2(s string) string {
 		left1, right1 := expandFromCenter(s, i, i)
 		left2, right2 := expandFromCenter(s, i, i+1)
 
-		if right1-left1 > end- start {
+		if right1-left1 > end-start {
 			start, end = left1, right1
 		}
 
-		if right2-left2 >  end- start {
+		if right2-left2 > end-start {
 			start, end = left2, right2
 		}
 	}
