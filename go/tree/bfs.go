@@ -1,4 +1,4 @@
-package main
+package tree
 
 //层次遍历
 func levelTraversal(root *TreeNode) [][]int {
