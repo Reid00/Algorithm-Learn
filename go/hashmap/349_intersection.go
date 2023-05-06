@@ -20,7 +20,7 @@ func intersection(nums1 []int, nums2 []int) []int {
 	}
 
 	result := make([]int, 0)
-	for k, _ := range hmapResult {
+	for k := range hmapResult {
 		result = append(result, k)
 	}
 	return result
