@@ -1,12 +1,12 @@
 
-pub mod array
+pub mod array;
 
-pub mod hashmap
+pub mod hashmap;
 
-pub mod linklist
+pub mod linklist;
 
-pub mod queue
+pub mod queue;
 
-pub mod stack
+pub mod stack;
 
-pub mod  string
+pub mod  string;
