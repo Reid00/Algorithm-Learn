@@ -2,6 +2,8 @@ package tree
 
 import (
 	"testing"
+
+	"github.com/Reid00/Algorithm-Learn/sort"
 )
 
 func TestDfs(t *testing.T) {
@@ -79,7 +81,7 @@ func TestIntSliceEqual(t *testing.T) {
 }
 
 func TestMergeSort(t *testing.T) {
-	actual := mergeSort([]int{9, 2, 5, 7, 6, 3})
+	actual := sort.MergeSort([]int{9, 2, 5, 7, 6, 3})
 
 	expected := []int{2, 3, 5, 6, 7, 9}
 	if intSliceEqual(actual, expected) {
@@ -91,12 +93,12 @@ func TestMergeSort(t *testing.T) {
 
 func TestPartition(t *testing.T) {
 	a := []int{9, 2, 5, 7, 6, 3}
-	actual := quickSort(a)
+	sort.QuickSort(a)
 	expected := []int{2, 3, 5, 6, 7, 9}
-	if intSliceEqual(actual, expected) {
+	if intSliceEqual(a, expected) {
 		t.Log("TestPartition result right.")
 	} else {
-		t.Errorf("TestPartition result wrong. actual: %d", actual)
+		t.Errorf("TestPartition result wrong. actual: %d", a)
 	}
 
 }

@@ -1,11 +1,11 @@
-package main
+package sort
 
 import "testing"
 
 var nums = []int{1, 5, 13, 6, 2}
 
 func TestQuickSort(t *testing.T) {
-	quickSort(nums)
+	QuickSort(nums)
 	t.Log(nums)
 }
 
@@ -15,7 +15,7 @@ func TestBubleSort(t *testing.T) {
 }
 
 func TestMergeSort(t *testing.T) {
-	ret := mergeSort(nums)
+	ret := MergeSort(nums)
 	t.Log(ret)
 }
 

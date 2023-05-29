@@ -1,4 +1,4 @@
-package main
+package sort
 
 // 归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
 
@@ -7,7 +7,7 @@ package main
 // 自下而上的迭代；
 
 // 递归的实现
-func mergeSort(a []int) []int {
+func MergeSort(a []int) []int {
 	length := len(a)
 	if length < 2 {
 		return a
@@ -15,8 +15,8 @@ func mergeSort(a []int) []int {
 
 	mid := length / 2
 
-	left := mergeSort(a[:mid])
-	right := mergeSort(a[mid:])
+	left := MergeSort(a[:mid])
+	right := MergeSort(a[mid:])
 
 	return merge(left, right)
 }
