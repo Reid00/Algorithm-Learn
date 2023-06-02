@@ -1,4 +1,3 @@
-
 pub mod array;
 
 pub mod hashmap;
@@ -9,4 +8,6 @@ pub mod queue;
 
 pub mod stack;
 
-pub mod  string;
+pub mod string;
+
+pub mod unionfind;
