@@ -13,3 +13,5 @@ pub mod string;
 pub mod unionfind;
 
 pub mod heap;
+
+pub mod tree;
