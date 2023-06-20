@@ -15,3 +15,5 @@ pub mod unionfind;
 pub mod heap;
 
 pub mod tree;
+
+pub mod binarysearch;
