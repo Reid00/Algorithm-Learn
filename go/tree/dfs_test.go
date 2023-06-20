@@ -29,7 +29,7 @@ func TestDfs(t *testing.T) {
 		},
 	}
 
-	acutal := preorderTraversal(&root)
+	acutal := preorderTraversal2(&root)
 	expected := []int{1, 2, 3, 4, 5, 6, 7}
 
 	if !intSliceEqual(acutal, expected) {

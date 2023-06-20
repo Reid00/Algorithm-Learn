@@ -7,7 +7,7 @@ type TreeNode struct {
 }
 
 // 前序遍历递归实现
-func preorderTraversal(root *TreeNode) []int {
+func preorderTraversal2(root *TreeNode) []int {
 	result := make([]int, 0)
 	if root == nil {
 		return result
@@ -94,7 +94,7 @@ func indorderTraversalNo(root *TreeNode) []int {
 }
 
 // 后序遍历递归
-func postorderTraversal(root *TreeNode) []int {
+func postorderTraversal_(root *TreeNode) []int {
 	result := make([]int, 0)
 
 	var postorder func(*TreeNode)
