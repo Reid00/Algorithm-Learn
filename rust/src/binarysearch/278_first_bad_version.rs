@@ -21,14 +21,3 @@ pub fn first_bad_version(n: i32) -> i32 {
 
     left
 }
-
-
-pub fn first_bad_version2(n: i32) -> i32 {
-	let (mut left, mut right) = (1, n);
-
-    let isBadVersion = |x| -> bool {
-        x == 4
-    };
-
-
-}
