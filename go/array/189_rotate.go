@@ -17,6 +17,7 @@ func rotate(nums []int, k int) {
 
 }
 
+// reverse2 交换i,j 之间的元素，包含i,j
 func reverse2(nums []int, i, j int) {
 	for ; i < j; i, j = i+1, j-1 {
 		nums[i], nums[j] = nums[j], nums[i]
