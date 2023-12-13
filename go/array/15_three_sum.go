@@ -56,3 +56,66 @@ func threeSum(nums []int) [][]int {
 
 	return ans
 }
+
+// threeSum 三数之和
+func threeSum2(nums []int) [][]int {
+
+	ans := make([][]int, 0)
+
+	// 先排序，固定一个数字之后，再用左右指针去找组合
+	// 注意1: 答案中不可以包含重复的三元组，则固定一个元素后，第二个第三个元素应该过滤掉重复的元素
+	sort.Ints(nums)
+
+	for first := 0; first < len(nums); first++ {
+
+		// 优化1: 第一个元素大于0 了，则后续升序排列 不存在pairs
+		if nums[first] > 0 {
+			break
+		}
+
+		// 优化3:
+		if first+2 < len(nums) && nums[first]+nums[first+1]+nums[first+2] > 0 {
+			break
+		}
+
+		// 避免注意1 中的问题， 需要和上一次枚举的数不相同
+		if first > 0 && nums[first] == nums[first-1] {
+			continue
+		}
+
+		third := len(nums) - 1
+		// 枚举第二个和第三个元素
+		for second := first + 1; second < len(nums); second++ {
+
+			if second > first+1 && nums[second] == nums[second-1] {
+				continue
+			}
+
+			// 优化2: 如果三数之和小于0 则直接增加second, 进行下一次循环，避免无效遍历
+			if nums[first]+nums[second]+nums[third] < 0 {
+				continue
+			}
+
+			// 枚举第三个元素(在第二个循环之内)，此种办法每次枚举第三个元素，
+			// 都会从头遍历，增加了时间复杂度
+			// 把third 先确定之后，在枚举第二个元素，如果元素之和都大于0 因为有序排列，则此时没有结果
+			// third := len(nums) - 1
+			for second < third && nums[first]+nums[second]+nums[third] > 0 {
+				third--
+			}
+
+			// 以first 开始的三元组没有可以满足的
+			if second == third {
+				break
+			}
+
+			if nums[first]+nums[second]+nums[third] == 0 {
+				ans = append(ans, []int{nums[first], nums[second], nums[third]})
+			}
+
+		}
+
+	}
+
+	return ans
+}

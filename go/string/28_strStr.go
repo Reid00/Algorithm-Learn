@@ -21,6 +21,7 @@ func strStr(haystack string, needle string) int {
 }
 
 // strStr2 KMP 算法, 详情: https://www.cnblogs.com/zzuuoo666/p/9028287.html
+// https://www.zhihu.com/question/21923021/answer/281346746
 // TODO to understand
 func strStr2(haystack string, needle string) int {
 
