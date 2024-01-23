@@ -1,5 +1,3 @@
-
-
 pub fn is_anagram(s: String, t: String) -> bool {
     // HashMap
     use std::collections::HashMap;
@@ -7,11 +5,10 @@ pub fn is_anagram(s: String, t: String) -> bool {
     let s: Vec<char> = s.chars().collect();
     let t: Vec<char> = t.chars().collect();
 
-
     let mut hmap_s = HashMap::new();
     let mut hamp_t = HashMap::new();
 
-    for ch  in s  {
+    for ch in s {
         *hmap_s.entry(ch).or_insert(0) += 1;
     }
 
@@ -31,10 +28,9 @@ pub fn is_anagram2(s: String, t: String) -> bool {
     let s: Vec<char> = s.chars().collect();
     let t: Vec<char> = t.chars().collect();
 
-
     let mut hmap = HashMap::new();
 
-    for ch  in s  {
+    for ch in s {
         *hmap.entry(ch).or_insert(0) += 1;
     }
 
@@ -44,5 +40,6 @@ pub fn is_anagram2(s: String, t: String) -> bool {
         *hmap.entry(ch).or_insert(0) -= 1;
     }
 
-    !hmap.iter().any(|(_, &v)|v!=0)
+    !hmap.iter().any(|(_, &v)| v != 0)
+    // hmap.iter().all(|(_, x)| *x == 0)
 }
