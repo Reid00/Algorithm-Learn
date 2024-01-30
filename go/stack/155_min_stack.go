@@ -2,66 +2,61 @@ package stack
 
 // 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
 // Method 2: 不用辅助栈，额外的空间O(1)
-// 思路是stack 中存放当前push 和 min_val 之间的差值diff
-// pop 的时候需要 diff + min_val
+// 思路: stack 中存放 当前push value 和 上次 lastMinVal 之间的差值 diff, 即是: diff = value - lastMinVal
+// if diff < 0 => value 更小，他应该是当前这整个数组中最小的值，即minVal = value
+// 否则，minValue 是数组中最小的值
+// 这样Pop 的值如果是在栈顶，新的minVal = minVal - diff
 type MinStack struct {
-	stack  []int
+	data   []int
 	minVal int
 }
 
 func Constructor() MinStack {
-	stack := make([]int, 0)
-	minVal := -1
+	// minVal 初始时长多少无所谓，后续push 元素的时候会判断初始情况
 	return MinStack{
-		stack:  stack,
-		minVal: minVal,
+		data:   make([]int, 0),
+		minVal: -1,
 	}
 }
 
 func (m *MinStack) Push(val int) {
-	if len(m.stack) == 0 {
-		// 如果开始栈中为空, diff = 0
-		m.stack = append(m.stack, 0)
+	if len(m.data) == 0 {
+		// 初始时 存放原始值的差值是0
+		m.data = append(m.data, 0)
 		m.minVal = val
 	} else {
 		diff := val - m.minVal
 		if diff < 0 {
 			m.minVal = val
 		}
-		m.stack = append(m.stack, diff)
+		m.data = append(m.data, diff)
 	}
-
 }
 
 func (m *MinStack) Pop() {
-	if len(m.stack) == 0 {
+	if len(m.data) == 0 {
 		return
 	}
 
-	diff := m.stack[len(m.stack)-1]
-	// 说明存储的diff 是最顶上的数据，pop 出来之后需要更新下minVal
+	diff := m.data[len(m.data)-1]
+	// 栈顶是最小值元素，pop 之后需要更新 minVal
 	if diff < 0 {
 		m.minVal = m.minVal - diff
-	} else {
-		// diff 大于0, 说明minVal 和 top 元素无关
 	}
-	m.stack = m.stack[:len(m.stack)-1]
-
+	// 删除元素
+	m.data = m.data[:len(m.data)-1]
 }
 
 func (m *MinStack) Top() int {
-	if len(m.stack) == 0 {
+	if len(m.data) == 0 {
 		return -1
 	}
-
-	diff := m.stack[len(m.stack)-1]
+	diff := m.data[len(m.data)-1]
+	// 栈顶即是最小值，value = minVal
 	if diff < 0 {
-		// 之前push 进来的栈顶元素是 minVal
 		return m.minVal
-	} else {
-		return diff + m.minVal
 	}
-
+	return m.minVal + diff
 }
 
 func (m *MinStack) GetMin() int {
