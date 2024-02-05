@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func addTwoNumber(l1 *ListNode, l2 *ListNode) *ListNode {
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	dummy := &ListNode{}
 
