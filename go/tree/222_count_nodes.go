@@ -1,7 +1,5 @@
 package tree
 
-import "math"
-
 // countNode 完全二叉树的节点个数
 func countNodes(root *TreeNode) int {
 
@@ -55,7 +53,7 @@ func countNodes2(root *TreeNode) int {
 
 	if lDepth == rDepth {
 		// return int(math.Pow(2, float64(lDepth)+1) - 1)
-		return 2 << (lDepth+1) -1
+		return 2<<(lDepth+1) - 1
 	}
 
 	return countNodes2(root.Left) + countNodes2(root.Right) + 1
