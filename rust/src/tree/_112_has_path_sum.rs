@@ -1,11 +1,12 @@
-
+use super::TreeNode;
+use std::cell::RefCell;
+use std::rc::Rc;
 
 // has_path_sum 路径总和  某个路径上是否存在到叶子节点总合等于targetSum 的路径
 // BFS  加入到queue中的时候，同时把到此点的路径和计算出来
 pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
-
     if root.is_none() {
-        return false
+        return false;
     }
 
     use std::collections::VecDeque;
@@ -17,16 +18,17 @@ pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> boo
     queue.push_back((root, v));
 
     while !queue.is_empty() {
-
-        
         for _ in 0..queue.len() {
-            if let Some((node, path_sum)) = queue.pop_front(){
+            if let Some((node, path_sum)) = queue.pop_front() {
                 if let Some(n) = node {
                     // 左右子树为None 才为叶子节点
-                    if n.borrow().left.is_none() && n.borrow().right.is_none() && path_sum == target_sum {
-                        return true
+                    if n.borrow().left.is_none()
+                        && n.borrow().right.is_none()
+                        && path_sum == target_sum
+                    {
+                        return true;
                     }
-                    
+
                     println!("n and path_sum: {}, {}", n.borrow().val, path_sum);
 
                     if n.borrow().left.is_some() {
@@ -40,7 +42,6 @@ pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> boo
                         let v = right.as_ref().unwrap().borrow().val;
                         queue.push_back((right, path_sum + v));
                     }
-
                 }
             }
         }
@@ -48,30 +49,46 @@ pub fn has_path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> boo
     false
 }
 
+// MATCH 递归
+pub fn has_path_sum_(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
+    match root {
+        Some(n) => {
+            let v = n.borrow().val;
+
+            if n.borrow().left.is_none() && n.borrow().right.is_none() && v == target_sum {
+                return true;
+            }
+
+            has_path_sum_(n.borrow().left.clone(), target_sum - v)
+                || has_path_sum_(n.borrow().right.clone(), target_sum - v)
+        }
+
+        _ => false,
+    }
+}
 
 // has_path_sum 路径总和  某个路径上是否存在到叶子节点总合等于targetSum 的路径
 // DFS
 pub fn has_path_sum2(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> bool {
-
     has_sum(&root, target_sum)
-  
 }
 
 fn has_sum(root: &Option<Rc<RefCell<TreeNode>>>, target: i32) -> bool {
-
     if root.is_none() {
-        return false
+        return false;
     }
 
     if let Some(root) = root {
-        
-        if root.borrow().left.is_none() && root.borrow().right.is_none() && root.borrow().val == target {
-            return true
+        if root.borrow().left.is_none()
+            && root.borrow().right.is_none()
+            && root.borrow().val == target
+        {
+            return true;
         }
-        
+
         // 剩余路径的和为target - root.val
-        return has_sum(&root.borrow().left, target - root.borrow().val) || 
-        has_sum(&root.borrow().right, target - root.borrow().val)
+        return has_sum(&root.borrow().left, target - root.borrow().val)
+            || has_sum(&root.borrow().right, target - root.borrow().val);
     }
-    return false
+    return false;
 }

@@ -1,11 +1,12 @@
-
-
-
+use super::TreeNode;
+use std::cell::RefCell;
+use std::rc::Rc;
 
 // invertTree 翻转二叉树  递归
 pub fn invert_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
     match root {
         None => None,
+
         Some(root) => {
             let left = invert_tree(root.borrow_mut().left.take());
             let right = invert_tree(root.borrow_mut().right.take());
@@ -15,5 +16,4 @@ pub fn invert_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<Tre
             Some(root)
         }
     }
-
 }
