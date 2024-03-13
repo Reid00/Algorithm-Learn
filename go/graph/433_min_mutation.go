@@ -95,6 +95,8 @@ func minMutation2(startGene string, endGene string, bank []string) int {
 
 	for len(startQ) > 0 {
 
+		cnt++
+
 		for _, v := range startQ {
 			startQ = startQ[1:]
 
@@ -122,7 +124,6 @@ func minMutation2(startGene string, endGene string, bank []string) int {
 		if len(startQ) > len(endQ) {
 			startQ, endQ = endQ, startQ
 		}
-		cnt++
 
 	}
 

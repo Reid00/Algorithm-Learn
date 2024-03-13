@@ -1,0 +1,9 @@
+mod _77_combine;
+mod _46_permute;
+mod _17_letter_combinations;
+mod _39_combination_sum;
+mod _78_subsets;
+mod _51_solve_n_queens;
+mod _52_total_n_queens;
+mod _22_generate_parenthesis;
+mod _79_exist;

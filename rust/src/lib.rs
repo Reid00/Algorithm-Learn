@@ -17,3 +17,9 @@ pub mod heap;
 pub mod tree;
 
 pub mod binarysearch;
+
+pub mod backtracking;
+
+pub mod graph;
+
+pub mod trie;
