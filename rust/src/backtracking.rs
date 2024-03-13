@@ -7,3 +7,5 @@ mod _51_solve_n_queens;
 mod _52_total_n_queens;
 mod _22_generate_parenthesis;
 mod _79_exist;
+mod _784_letter_case_permutation;
+mod _1593_max_unique_split;
