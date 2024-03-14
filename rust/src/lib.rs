@@ -23,3 +23,5 @@ pub mod backtracking;
 pub mod graph;
 
 pub mod trie;
+
+pub mod divide_and_conquer;
