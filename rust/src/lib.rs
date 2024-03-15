@@ -25,3 +25,5 @@ pub mod graph;
 pub mod trie;
 
 pub mod divide_and_conquer;
+
+pub mod kadane;
