@@ -1,9 +1,9 @@
+mod _203_remove_elem;
 mod _206_reverse_list;
 mod _21_merge_two_lists;
 mod _25_reverse_k_group;
 mod _2_add_two_num;
 mod _92_reverse_between;
-mod _203_remove_elem;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
@@ -14,6 +14,7 @@ pub struct ListNode {
 
 impl ListNode {
     #[inline]
+    #[allow(dead_code)]
     fn new(val: i32) -> Self {
         ListNode { next: None, val }
     }

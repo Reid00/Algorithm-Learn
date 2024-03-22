@@ -27,3 +27,5 @@ pub mod trie;
 pub mod divide_and_conquer;
 
 pub mod kadane;
+
+pub mod bit;
