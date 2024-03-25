@@ -35,6 +35,7 @@ fn builder(preorder: &[i32], inorder: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
 
 /// 迭代的方式实现
 /// Error  参考Go 的105 后续有时间实现
+#[allow(unreachable_code)]
 pub fn build_tree2(preorder: Vec<i32>, inorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
     if preorder.is_empty() {
         return None;
