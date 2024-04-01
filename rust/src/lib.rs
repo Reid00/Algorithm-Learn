@@ -31,3 +31,7 @@ pub mod kadane;
 pub mod bit;
 
 pub mod math;
+
+pub mod dp_one_dim;
+
+pub mod dp_two_dim;
